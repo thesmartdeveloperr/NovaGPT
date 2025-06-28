@@ -4,6 +4,7 @@ import './App.css';
 function App() {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const sendMessage = async () => {
     if (!input.trim()) return;
@@ -11,6 +12,7 @@ function App() {
     const newMessages = [...messages, { sender: "user", text: input }];
     setMessages(newMessages);
     setInput("");
+    setIsLoading(true);
   
     try {
       const response = await fetch(process.env.REACT_APP_API_URL, {
@@ -31,6 +33,8 @@ function App() {
         ...newMessages,
         { sender: "bot", text: `❌ Error: ${err.message}` }
       ]);
+    } finally {
+      setIsLoading(false);
     }
   };
   
@@ -44,6 +48,11 @@ function App() {
             <span>{msg.text}</span>
           </div>
         ))}
+        {isLoading && (
+          <div className="message bot">
+            <span>Bot is typing...</span>
+          </div>
+        )}
       </div>
       <div className="input-area">
         <input
@@ -53,7 +62,7 @@ function App() {
           onKeyDown={(e) => e.key === 'Enter' && sendMessage()}
           placeholder="Ask anything..."
         />
-        <button class="" onClick={sendMessage}>Send</button>
+        <button onClick={sendMessage}>Send</button>
       </div>
     </div>
   );

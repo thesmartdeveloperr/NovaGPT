@@ -1,51 +1,117 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
+
+body {
+  background-color: #121212;
+  color: #ffffff;
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
 .chat-container {
-  width: 100%;
-  max-width: 700px;
-  margin: auto;
-  font-family: sans-serif;
+  background-color: #1e1e1e;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+  width: 80vw;
+  max-width: 1400px;
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+h1 {
   text-align: center;
+  padding: 20px;
+  margin: 0;
+  background-color: #2a2a2a;
+  border-bottom: 1px solid #333;
+  font-weight: 500;
 }
 
 .chat-box {
-  height: 500px;
-  overflow-y: scroll;
-  border: 1px solid #ccc;
-  padding: 10px;
-  background: #979797;
+  flex-grow: 1;
+  padding: 20px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
 }
 
 .message {
-  padding: 8px;
-  margin: 4px 0;
-  border-radius: 10px;
-  max-width: 80%;
-  text-align: left;
+  display: flex;
+  align-items: flex-end;
+  max-width: 75%;
+}
+
+.message span {
+  padding: 10px 15px;
+  border-radius: 18px;
+  line-height: 1.5;
 }
 
 .message.user {
-  background-color: #d1e7dd;
   align-self: flex-end;
 }
 
+.message.user span {
+  background-color: #005c4b;
+  color: white;
+  border-bottom-right-radius: 4px;
+}
+
 .message.bot {
-  background-color: #e2e3e5;
   align-self: flex-start;
+}
+
+.message.bot span {
+  background-color: #3a3a3a;
+  color: #e0e0e0;
+  border-bottom-left-radius: 4px;
 }
 
 .input-area {
   display: flex;
-  margin-top: 10px;
+  padding: 20px;
+  background-color: #2a2a2a;
+  border-top: 1px solid #333;
 }
 
 .input-area input {
-  flex: 1;
-  padding: 10px;
+  flex-grow: 1;
+  padding: 12px 15px;
+  border: none;
+  border-radius: 25px;
+  background-color: #3a3a3a;
+  color: white;
+  font-size: 16px;
+}
+
+.input-area input::placeholder {
+  color: #888;
+}
+
+.input-area input:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px #005c4b;
 }
 
 .input-area button {
-  padding: 10px 20px;
+  margin-left: 10px;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 25px;
+  background-color: #005c4b;
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+  transition: background-color 0.2s;
 }
 
-body{
-  background-color: orange;
+.input-area button:hover {
+  background-color: #007a63;
 }
